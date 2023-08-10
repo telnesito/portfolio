@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 
 const Game = () => {
 
-  let platforms;
+  let platforms, player;
 
   useEffect(() => {
     const config = {
@@ -36,6 +36,7 @@ const Game = () => {
   }, []);
 
   function preload() {
+    // Agregar mapa
     this.load.image('bg', 'gameAssets/BG.png')
     this.load.image('p-left', 'gameAssets/platformLeft.png')
     this.load.image('p-center', 'gameAssets/platformCenter.png')
@@ -48,6 +49,29 @@ const Game = () => {
 
     this.load.image('tree', 'gameAssets/Tree.png')
 
+    this.load.image('arrow', 'gameAssets/ArrowSign.png')
+
+    this.load.image('Skeleton', 'gameAssets/Skeleton.png')
+
+    // Agregar el jugador idle
+
+    this.load.image('player_idle', 'gameAssets/player/idle_1.png')
+    this.load.image('player_idle_2', 'gameAssets/player/idle_2.png')
+    this.load.image('player_idle_3', 'gameAssets/player/idle_3.png')
+    this.load.image('player_idle_4', 'gameAssets/player/idle_4.png')
+    this.load.image('player_idle_5', 'gameAssets/player/idle_5.png')
+    this.load.image('player_idle_6', 'gameAssets/player/idle_6.png')
+    this.load.image('player_idle_7', 'gameAssets/player/idle_7.png')
+    this.load.image('player_idle_8', 'gameAssets/player/idle_8.png')
+    this.load.image('player_idle_9', 'gameAssets/player/idle_9.png')
+    this.load.image('player_idle_10', 'gameAssets/player/idle_10.png')
+    this.load.image('player_idle_11', 'gameAssets/player/idle_11.png')
+    this.load.image('player_idle_12', 'gameAssets/player/idle_12.png')
+
+
+
+
+
 
 
 
@@ -56,9 +80,11 @@ const Game = () => {
   function create() {
     this.add.image(500, 0, 'bg')
     platforms = this.physics.add.staticGroup()
+    // Estructura no flotante
     platforms.create(300, 301, 'p-left')
     platforms.create(400, 301, 'p-center')
     platforms.create(500, 301, 'p-right')
+    // Estructura flotante
     platforms.create(900, 200, 'f-center')
     platforms.create(800, 200, 'f-left')
     platforms.create(1000, 200, 'f-right')
@@ -68,9 +94,44 @@ const Game = () => {
 
     this.add.image(400, 120, 'tree')
 
+    this.add.image(900, 100, 'arrow').setDepth(1)
+    this.add.image(1000, 130, 'Skeleton').setScale(0.7)
+    this.add.image(900, 120, 'bigBush').setScale(0.75).setDepth(0)
 
 
+    player = this.physics.add.sprite(400, 200, 'player_idle').setScale(2)
 
+    player.setCollideWorldBounds(true);
+
+    this.physics.add.collider(player, platforms);
+
+
+    // Animacion
+
+    this.anims.create({
+      key: 'idleAnims', // Nombre de la animación
+      frames: [
+        { key: 'player_idle' },
+        { key: 'player_idle_2' },
+        { key: 'player_idle_3' },
+        { key: 'player_idle_4' },
+        { key: 'player_idle_5' },
+        { key: 'player_idle_6' },
+        { key: 'player_idle_7' },
+        { key: 'player_idle_8' },
+        { key: 'player_idle_9' },
+        { key: 'player_idle_10' },
+        { key: 'player_idle_11' },
+        { key: 'player_idle_12' },
+
+        // ... agregar los otros frames aquí
+      ],
+      frameRate: 10, // Velocidad de la animación en fps
+      repeat: -1 // Repetir infinitamente
+    });
+
+    // Iniciar la animación en el sprite
+    player.play('idleAnims');
 
 
 
