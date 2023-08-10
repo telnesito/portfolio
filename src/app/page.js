@@ -1,10 +1,10 @@
-import { Typography } from '@mui/material'
-import ButtonLinkedin from './components/Button'
+import styles from './page.module.css'
+import Profile from './components/Profile'
 
 export default function Home() {
   return (
-    <main>
-      <Typography>Hola mundo a</Typography>
+    <main className={styles.contenedorPrincipal}>
+      <Profile />
     </main>
   )
 }
