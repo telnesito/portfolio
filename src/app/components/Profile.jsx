@@ -2,12 +2,14 @@ import React from 'react'
 import { Box } from '@mui/material'
 import Image from 'next/image'
 import styles from './profile.module.css'
+import Game from './Game'
 
 
 const Profile = () => (
-  <Box height={'558.5px'} width={'100%'} bgcolor={'#1D2226'}>
-    <Box id='game' width={'100%'} bgcolor={'white'} height={'201px'}>
+  <Box height={'688.5px'} width={'100%'} bgcolor={'#1D2226'} display={'flex'} flexDirection={'column'}>
+    <Box id='game' width={'100%'} bgcolor={'white'} height={'301px'}>
       {/* Header - Juego */}
+      <Game />
     </Box>
 
     <Box width={'100%'} height={'233px'}  >
