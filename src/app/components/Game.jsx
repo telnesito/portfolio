@@ -68,10 +68,21 @@ const Game = () => {
     this.load.image('player_idle_11', 'gameAssets/player/idle_11.png')
     this.load.image('player_idle_12', 'gameAssets/player/idle_12.png')
 
+    // Agregar el jugador run
+
+    this.load.image('player_run', 'gameAssets/player/run (1).png')
+    this.load.image('player_run_2', 'gameAssets/player/run (2).png')
+    this.load.image('player_run_3', 'gameAssets/player/run (3).png')
+    this.load.image('player_run_4', 'gameAssets/player/run (4).png')
+    this.load.image('player_run_5', 'gameAssets/player/run (5).png')
+    this.load.image('player_run_6', 'gameAssets/player/run (6).png')
+    this.load.image('player_run_7', 'gameAssets/player/run (7).png')
+    this.load.image('player_run_8', 'gameAssets/player/run (8).png')
+
+    // Agregar al jugador jump
 
 
-
-
+    this.load.image('player_jump', 'gameAssets/player/jump.png')
 
 
 
@@ -130,8 +141,27 @@ const Game = () => {
       repeat: -1 // Repetir infinitamente
     });
 
+
+    this.anims.create({
+      key: 'runAnims', // Nombre de la animación
+      frames: [
+        { key: 'player_run' },
+        { key: 'player_run_2' },
+        { key: 'player_run_3' },
+        { key: 'player_run_4' },
+        { key: 'player_run_5' },
+        { key: 'player_run_6' },
+        { key: 'player_run_7' },
+        { key: 'player_run_9' },
+
+        // ... agregar los otros frames aquí
+      ],
+      frameRate: 10, // Velocidad de la animación en fps
+      repeat: -1 // Repetir infinitamente
+    });
+
     // Iniciar la animación en el sprite
-    player.play('idleAnims');
+    player.play('runAnims');
 
 
 
