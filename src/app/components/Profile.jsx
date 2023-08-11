@@ -11,7 +11,7 @@ const Profile = () => (
 
     <Box id='game' width={'100%'} bgcolor={'white'} height={'301px'}>
       {/* Header - Juego */}
-      <Game />
+      {/* <Game /> */}
     </Box>
 
     <Box width={'100%'} height={'233px'}  >
