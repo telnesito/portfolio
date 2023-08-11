@@ -1,18 +1,19 @@
 'use client'
 import React from 'react'
 import Phaser from 'phaser'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useEffect } from 'react'
 
 const Game = () => {
 
-  let platforms, player;
+  let platforms, player, cursor, camera, newPlatforms;
 
   useEffect(() => {
     const config = {
       type: Phaser.AUTO,
       height: 301,
-      width: 2000,
+      width: '100%',
+
       parent: 'game',
       physics: {
         default: "arcade",
@@ -41,9 +42,23 @@ const Game = () => {
     this.load.image('p-left', 'gameAssets/platformLeft.png')
     this.load.image('p-center', 'gameAssets/platformCenter.png')
     this.load.image('p-right', 'gameAssets/platformRight.png')
-    this.load.image('f-center', 'gameAssets/f-center.png')
-    this.load.image('f-left', 'gameAssets/f-left.png')
-    this.load.image('f-right', 'gameAssets/f-right.png')
+    this.load.image('caja', 'gameAssets/Crate.png')
+    this.load.image('arena-c', 'gameAssets/arena-c.png')
+    this.load.image('arena-l', 'gameAssets/arena-l.png')
+    this.load.image('arena-r', 'gameAssets/arena-r.png')
+
+    this.load.spritesheet('f-center', 'gameAssets/f-center.png', {
+      frameWidth: 128,
+      frameHeight: 80
+    })
+    this.load.spritesheet('f-left', 'gameAssets/f-left.png', {
+      frameWidth: 128,
+      frameHeight: 80
+    })
+    this.load.spritesheet('f-right', 'gameAssets/f-right.png', {
+      frameWidth: 128,
+      frameHeight: 80
+    })
     this.load.image('bigBush', 'gameAssets/bigBush.png')
     this.load.image('smallBush', 'gameAssets/smallBush.png')
 
@@ -89,34 +104,66 @@ const Game = () => {
   }
   // this.sys.game.config.width
   function create() {
-    this.add.image(500, 0, 'bg')
+    this.add.image(0, 0, 'bg')
     platforms = this.physics.add.staticGroup()
     // Estructura no flotante
     platforms.create(300, 301, 'p-left')
     platforms.create(400, 301, 'p-center')
     platforms.create(500, 301, 'p-right')
+
+
+    platforms.create(-200, 351, 'p-left')
+    platforms.create(-100, 351, 'p-center')
+    platforms.create(0, 351, 'p-right')
+
+    platforms.create(-925, 400, 'p-left')
+    platforms.create(-825, 400, 'p-center')
+    platforms.create(-725, 400, 'p-right')
+
+    platforms.create(300, 426, 'arena-l')
+    platforms.create(400, 426, 'arena-c')
+    platforms.create(500, 426, 'arena-r')
+
+
+    // Caja
+    platforms.create(-800, 285, 'caja')
     // Estructura flotante
     platforms.create(900, 200, 'f-center')
     platforms.create(800, 200, 'f-left')
     platforms.create(1000, 200, 'f-right')
+
+
+
+
+    platforms.create(-500, 200, 'f-center')
+    platforms.create(-600, 200, 'f-left')
+    platforms.create(-400, 200, 'f-right')
 
     this.add.image(480, 220, 'smallBush').setScale(0.5)
     this.add.image(380, 220, 'bigBush').setScale(0.5)
 
     this.add.image(400, 120, 'tree')
 
-    this.add.image(900, 100, 'arrow').setDepth(1)
-    this.add.image(1000, 130, 'Skeleton').setScale(0.7)
-    this.add.image(900, 120, 'bigBush').setScale(0.75).setDepth(0)
+    this.add.image(900, 120, 'arrow').setDepth(1)
+    this.add.image(1000, 150, 'Skeleton').setScale(0.7).setDepth(1)
+    this.add.image(900, 140, 'bigBush').setScale(0.75).setDepth(0)
 
 
-    player = this.physics.add.sprite(400, 200, 'player_idle').setScale(2)
 
-    player.setCollideWorldBounds(true);
+    // camera = this.cameras.add();
 
+
+
+    // (x, y, width, height);
+    // Player
+    player = this.physics.add.sprite(0, 200, 'player_idle').setScale(2)
     this.physics.add.collider(player, platforms);
+    player.setBounce(0.2)
+    player.body.setGravityY(300);
 
 
+    // camara
+    this.cameras.main.startFollow(player);
     // Animacion
 
     this.anims.create({
@@ -160,15 +207,45 @@ const Game = () => {
       repeat: -1 // Repetir infinitamente
     });
 
-    // Iniciar la animación en el sprite
-    player.play('runAnims');
+    this.anims.create({
+      key: 'jumpAnims', // Nombre de la animación
+      frames: [
+        { key: 'player_jump' },
 
 
+        // ... agregar los otros frames aquí
+      ],
+      frameRate: 10, // Velocidad de la animación en fps
+      // repeat: -1 // Repetir infinitamente
+    });
+
+    console.log(player)
+
+    // Crear el cursor
+
+    cursor = this.input.keyboard.createCursorKeys();
 
   }
 
   function update() {
+    if (cursor.left.isDown) {
+      player.setVelocityX(-160);
+      player.anims.play("runAnims", true);
+    } else if (cursor.right.isDown) {
+      player.setVelocityX(+160);
+      player.anims.play("runAnims", true);
+    } else {
+      player.setVelocityX(0);
+      player.anims.play("idleAnims");
+    }
 
+
+
+    if (cursor.up.isDown && player.body.touching.down) {
+      player.setVelocityY(-450);
+      player.anims.play("jumpAnims");
+
+    }
   }
   return (
     <Box>
