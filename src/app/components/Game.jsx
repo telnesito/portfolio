@@ -141,6 +141,15 @@ const Game = () => {
     platforms.create(-600, 200, 'f-left')
     platforms.create(-400, 200, 'f-right')
 
+    platforms.create(400, -20, 'f-center')
+    platforms.create(300, -20, 'f-left')
+    platforms.create(500, -20, 'f-right')
+
+    platforms.create(850, -40, 'f-left')
+    platforms.create(950, -40, 'f-right')
+
+
+
     this.add.image(480, 220, 'smallBush').setScale(0.5)
     this.add.image(380, 220, 'bigBush').setScale(0.5)
 
