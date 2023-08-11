@@ -68,6 +68,12 @@ const Game = () => {
 
     this.load.image('Skeleton', 'gameAssets/Skeleton.png')
 
+    this.load.image('lapida', 'gameAssets/lapida.png')
+    this.load.image('cruz', 'gameAssets/cruz.png')
+
+    this.load.image('bushSmall', 'gameAssets/DeadBush.png')
+
+
     // Agregar el jugador idle
 
     this.load.image('player_idle', 'gameAssets/player/idle_1.png')
@@ -149,6 +155,11 @@ const Game = () => {
     platforms.create(950, -40, 'f-right')
 
 
+    this.add.image(0, 260, 'lapida').setScale(1)
+    this.add.image(-100, 250, 'cruz').setScale(1)
+    this.add.image(-200, 260, 'lapida').setScale(1)
+    this.add.image(-150, 250, 'bushSmall')
+
 
     this.add.image(480, 220, 'smallBush').setScale(0.5)
     this.add.image(380, 220, 'bigBush').setScale(0.5)
@@ -159,6 +170,7 @@ const Game = () => {
     this.add.image(1000, 150, 'Skeleton').setScale(0.7).setDepth(1)
     this.add.image(900, 140, 'bigBush').setScale(0.75).setDepth(0)
 
+    this.add.image(500, -100, 'arrow').setDepth(1)
 
 
     // camera = this.cameras.add();
@@ -260,8 +272,12 @@ const Game = () => {
 
     if (cursor.up.isDown && player.body.touching.down) {
       player.setVelocityY(-450);
-      player.anims.play("jumpAnims", true);
 
+    }
+
+    if (player.y > 900) {
+      player.y = 200
+      player.x = 0
     }
 
 
