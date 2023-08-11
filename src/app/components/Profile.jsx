@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, IconButton } from '@mui/material'
 import Image from 'next/image'
 import styles from './profile.module.css'
 import Game from './Game'
@@ -16,6 +16,8 @@ const Profile = () => (
 
     <Box width={'100%'} height={'233px'}  >
       <Image className={styles.avatar} width={160} height={172} alt='Foto de perfil de Carlos Ternera' src={'/images/avatar.png'} />
+
+      <Image className={styles.noti} width={24} height={24} alt='Foto de perfil de Carlos Ternera' src={'/images/noti.png'} />
 
       <Box mt={'100px'} ml={'30px'} display={'flex'} flexDirection={'column'} gap={'8px'}>
         <Box display={'flex'} justifyContent={'space-between'} width={'95%'}>
