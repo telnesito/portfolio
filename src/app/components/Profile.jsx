@@ -15,7 +15,7 @@ const Profile = () => (
       <Game />
     </Box>
 
-    <Box width={'100%'} height={'233px'}  >
+    {/* <Box width={'100%'} height={'233px'}  >
       <Image className={styles.avatar} width={160} height={172} alt='Foto de perfil de Carlos Ternera' src={'/images/avatar.png'} />
 
       <Image className={styles.noti} width={24} height={24} alt='Foto de perfil de Carlos Ternera' src={'/images/noti.png'} />
@@ -58,7 +58,7 @@ const Profile = () => (
         <Typography fontSize={'14px'} fontWeight={'700'} color={'#70B5F9'}>Mostrar detalles</Typography>
 
       </Box>
-    </Box>
+    </Box> */}
   </Box>
 )
 
