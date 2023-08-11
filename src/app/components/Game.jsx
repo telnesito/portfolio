@@ -187,6 +187,9 @@ const Game = () => {
 
     // camara
     this.cameras.main.startFollow(player);
+    camera = this.cameras.add(980, 140, 150, 150)
+    camera.startFollow(player)
+    camera.setZoom(0.1)
     // Animacion
 
     this.anims.create({
@@ -250,6 +253,9 @@ const Game = () => {
     // Crear el cursor
 
     cursor = this.input.keyboard.createCursorKeys();
+
+
+
 
   }
 
