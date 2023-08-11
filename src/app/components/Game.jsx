@@ -9,31 +9,35 @@ const Game = () => {
   let platforms, player, cursor, camera, newPlatforms;
 
   useEffect(() => {
-    const config = {
-      type: Phaser.AUTO,
-      height: 301,
-      width: '100%',
+    if (typeof window !== 'undefined') {
 
-      parent: 'game',
-      physics: {
-        default: "arcade",
-        arcade: {
-          gravity: { y: 300 },
-          debug: false,
+      const config = {
+        type: Phaser.AUTO,
+        height: 301,
+        width: '100%',
+
+        parent: 'game',
+        physics: {
+          default: "arcade",
+          arcade: {
+            gravity: { y: 300 },
+            debug: false,
+          },
         },
-      },
-      scene: {
-        preload,
-        create,
-        update,
-      },
-    };
+        scene: {
+          preload,
+          create,
+          update,
+        },
+      };
 
-    const game = new Phaser.Game(config);
+      const game = new Phaser.Game(config);
 
-    return () => {
-      game.destroy(true);
-    };
+      return () => {
+        game.destroy(true);
+      };
+      // Código de Phaser
+    }
   }, []);
 
   function preload() {
