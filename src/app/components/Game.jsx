@@ -72,6 +72,8 @@ const Game = () => {
     this.load.image('cruz', 'gameAssets/cruz.png')
 
     this.load.image('bushSmall', 'gameAssets/DeadBush.png')
+    this.load.image('Sign', 'gameAssets/Sign.png')
+
 
 
     // Agregar el jugador idle
@@ -155,6 +157,11 @@ const Game = () => {
     platforms.create(950, -40, 'f-right')
 
 
+    this.add.image(-200, -10, 'smallBush').setScale(0.5)
+    this.add.image(-150, -10, 'Skeleton')
+    this.add.image(0, -20, 'bushSmall').setScale(1)
+
+
     this.add.image(0, 260, 'lapida').setScale(1)
     this.add.image(-100, 250, 'cruz').setScale(1)
     this.add.image(-200, 260, 'lapida').setScale(1)
@@ -165,12 +172,18 @@ const Game = () => {
     this.add.image(380, 220, 'bigBush').setScale(0.5)
 
     this.add.image(400, 120, 'tree')
+    this.add.image(-500, 40, 'tree')
+
 
     this.add.image(900, 120, 'arrow').setDepth(1)
+
     this.add.image(1000, 150, 'Skeleton').setScale(0.7).setDepth(1)
     this.add.image(900, 140, 'bigBush').setScale(0.75).setDepth(0)
 
     this.add.image(500, -100, 'arrow').setDepth(1)
+    platforms.create(350, -110, 'caja').setDepth(0)
+
+    this.add.image(900, -150, 'Sign').setScale(1.5)
 
 
     // camera = this.cameras.add();
