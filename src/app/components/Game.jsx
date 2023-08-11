@@ -104,7 +104,7 @@ const Game = () => {
   }
   // this.sys.game.config.width
   function create() {
-    this.add.image(0, 0, 'bg')
+    this.add.image(0, 0, 'bg').setScale(2)
     platforms = this.physics.add.staticGroup()
     // Estructura no flotante
     platforms.create(300, 301, 'p-left')
@@ -132,7 +132,9 @@ const Game = () => {
     platforms.create(800, 200, 'f-left')
     platforms.create(1000, 200, 'f-right')
 
-
+    platforms.create(-200, 50, 'f-left')
+    platforms.create(-100, 50, 'f-center')
+    platforms.create(0, 50, 'f-right')
 
 
     platforms.create(-500, 200, 'f-center')
@@ -207,6 +209,9 @@ const Game = () => {
       repeat: -1 // Repetir infinitamente
     });
 
+    player.anims.play("idleAnims");
+
+
     this.anims.create({
       key: 'jumpAnims', // Nombre de la animación
       frames: [
@@ -215,7 +220,7 @@ const Game = () => {
 
         // ... agregar los otros frames aquí
       ],
-      frameRate: 10, // Velocidad de la animación en fps
+      frameRate: 100, // Velocidad de la animación en fps
       // repeat: -1 // Repetir infinitamente
     });
 
@@ -228,6 +233,8 @@ const Game = () => {
   }
 
   function update() {
+
+
     if (cursor.left.isDown) {
       player.setVelocityX(-160);
       player.anims.play("runAnims", true);
@@ -236,16 +243,19 @@ const Game = () => {
       player.anims.play("runAnims", true);
     } else {
       player.setVelocityX(0);
-      player.anims.play("idleAnims");
+      player.anims.play("idleAnims", true);
     }
+
 
 
 
     if (cursor.up.isDown && player.body.touching.down) {
       player.setVelocityY(-450);
-      player.anims.play("jumpAnims");
+      player.anims.play("jumpAnims", true);
 
     }
+
+
   }
   return (
     <Box>
