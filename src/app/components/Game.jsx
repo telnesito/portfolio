@@ -190,6 +190,7 @@ const Game = () => {
     camera = this.cameras.add(980, 140, 150, 150)
     camera.startFollow(player)
     camera.setZoom(0.1)
+
     // Animacion
 
     this.anims.create({
@@ -254,7 +255,8 @@ const Game = () => {
 
     cursor = this.input.keyboard.createCursorKeys();
 
-
+    this.cameras.main.pan(900, -100, 10000, 'Back')
+    // camera.pan(x, y, duration, ease, force, callback, context);
 
 
   }
@@ -284,6 +286,7 @@ const Game = () => {
     if (player.y > 900) {
       player.y = 200
       player.x = 0
+      this.cameras.main.shake(500);
     }
 
 
