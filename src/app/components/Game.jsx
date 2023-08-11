@@ -271,7 +271,27 @@ const Game = () => {
     this.cameras.main.pan(900, -100, 10000, 'Back')
     // camera.pan(x, y, duration, ease, force, callback, context);
 
-
+    const texto = this.add.text(
+      870,
+      -180,
+      'Fin',
+      {
+        fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', // Fuente con estilo rústico
+        fontSize: 34,
+        color: '#8B4513', // Color marrón
+        stroke: '#000000',
+        strokeThickness: 2,
+        shadow: {
+          offsetX: 2,
+          offsetY: 2,
+          color: '#000000',
+          blur: 5,
+          stroke: true,
+          fill: true
+        }
+      }
+    );
+    texto.setRotation(-0.1);
   }
 
   function update() {
