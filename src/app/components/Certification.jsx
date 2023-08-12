@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
 import { CERTIFICACIONES } from '../const/certificaciones'
 import ButtonLinkedin from './Button'
 import Image from 'next/image'
@@ -9,13 +9,13 @@ const Certification = () => {
       component={'section'}
       height={'auto'}
       paddingTop={'20px'}
-      paddingBottom={'20px'}
       bgcolor={'#1D2226'}
       width={'100%'}
       borderRadius={'8px'}
       display={'flex'}
       justifyContent={'center'}
       alignItems={'center'}
+      flexDirection={'column'}
     >
       <Box
         width={'95%'} display={'flex'} flexDirection={'column'} gap={'15px'}
@@ -34,8 +34,13 @@ const Certification = () => {
             <Typography mb={'10px'} fontSize={'13px'} mt={'20px'}><b>Aptitudes:</b> {aptitude}</Typography>
           </Box>
         </Box>)}
-
       </Box>
+      <Button endIcon={<Image alt='arrow btn' height={10} width={13} src={'/images/arrow.png'} />} fullWidth variant='text' sx={{
+        textTransform: 'initial',
+        fontSize: '14px',
+        fontWeight: '600',
+        color: 'white'
+      }}>Mostrar todo (14) </Button>
     </Box>
   )
 }
