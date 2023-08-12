@@ -41,9 +41,9 @@ const Profile = () => (
 
         <Typography color={'#70B5F9'} fontSize={'14px'} fontWeight={'700'}>Más de 500 contactos</Typography>
         <Box display={'flex'} gap={'10px'}>
-          <ButtonLinkedin texto={'Conectar'} type={'contained'} icon />
+          <ButtonLinkedin href={'https://www.linkedin.com/in/carlos-termera'} texto={'Conectar'} type={'contained'} icon />
           <ButtonLinkedin texto={'Enviar mensaje'} type={'outlinedBlue'} />
-          <ButtonLinkedin texto={'Más'} type={'outlinedWhite'} />
+          <ButtonLinkedin href={'https://github.com/telnesito'} texto={'Github'} type={'outlinedWhite'} />
         </Box>
 
 

@@ -47,9 +47,11 @@ const outlinedWhite = {
 // (condicion1) ? 'en caso true' : ((condicion2)? 'en caso true condicion 2':'en caso falso condicion 2')
 
 
-const ButtonLinkedin = ({ type, texto, icon = false }) => {
+const ButtonLinkedin = ({ type, texto, icon = false, href }) => {
   return (
     <Button
+      target='_blank'
+      href={href}
       startIcon={icon ? <Image width={12} height={14} src={'/images/Vector.png'} alt='add-person' /> : null}
       sx={type === 'contained' ? contained : type === 'outlinedBlue' ? outlinedBlue : outlinedWhite}
       variant={'outlined'}>{texto}</Button>
