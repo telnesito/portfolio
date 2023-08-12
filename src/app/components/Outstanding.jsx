@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
+import Link from 'next/link'
 const Outstanding = () => {
   return (
     <Box
@@ -21,7 +22,7 @@ const Outstanding = () => {
         <Typography fontSize={'19px'}>Destacado</Typography>
 
         <Box
-          height={'300px'}
+          height={'auto'}
           border={'1px solid #ffffff30'}
           borderRadius={'8px'}
           display={'flex'}
@@ -29,7 +30,7 @@ const Outstanding = () => {
         >
           <Typography
             fontSize={'13px'}
-            padding={'15px'}
+            padding={'10px'}
             color={'#ffffff60'}>Publicación</Typography>
 
           <Box
@@ -46,19 +47,42 @@ const Outstanding = () => {
               <Typography
                 fontSize={'15px'}
                 ml={'15px'}
-              >¡Hola a todos!
-                <br />
-                🌟 Soy un apasionado Desarrollador Web Frontend en búsqueda de nuevas oportunidades laborales. Con más de 1 año de experiencia en la creación de aplicaciones web dinámicas, estoy ansioso por seguir creciendo y aportar mi talento a proyectos innovadores.</Typography>
+              >Este currículum es un vistazo a mi trayectoria profesional, destacando los proyectos significativos en los que he trabajado y las habilidades que he cultivado. Espero que encuentres mi perfil interesante y relevante para las oportunidades que puedan surgir.Si deseas conocer más detalles sobre mi experiencia o cómo puedo contribuir a tu equipo, no dudes en ponerte en contacto conmigo.</Typography>
               <Box
                 height={'70px'}
                 width={'100%'}
 
                 bgcolor={'#38434F'}
               >
+                <Typography
+                  fontSize={'15px'}
+                  fontWeight={'700'}
+                  ml={'15px'}
+                  mt={'10px'}
+                >Resumen - Desarrollador Web FrontEnd</Typography>
 
+                <Typography
+                  ml={'15px'}
+                  fontSize={'13px'}
+                  sx={{
+                    textDecoration: 'underline',
+                    cursor: 'pointer'
+                  }}
+                >
+                  <Link target='_blank' href={'images/cv.pdf'} download={'CV- CARLOS TERNERA'} >Descargar CV</Link>
+                </Typography>
               </Box>
             </Box>
           </Box>
+          <Typography
+            fontSize={'13px'}
+            padding={'10px'}
+            color={'#ffffff60'}>
+            <Link target='_blank' href={'https://www.linkedin.com/feed/update/urn:li:activity:7088307503544852481/'}>
+              Ver en LinkedIn
+
+            </Link>
+          </Typography>
 
         </Box>
       </Box>
